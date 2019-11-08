@@ -1,0 +1,49 @@
+﻿
+@model List<LibraryApp.Entities.EntityModels.Kitap>
+
+@{
+    ViewBag.Title = "ListBook";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<body>
+    @Html.AntiForgeryToken()
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Kitap Numarası</th>
+                <th scope="col">Kitap Adı</th>
+                <th scope="col">Yazar Adı</th>
+                <th scope="col">Yazar Soyadı</th>
+                <th scope="col">Stok</th>
+                <th scope="col">Eklenme Tarihi</th>
+                <th scope="col">Güncelle</th>
+                <th scope="col">Sil</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.KitapNo</td>
+                    <td>@item.KitapAdi</td>
+                    <td>@item.YazarAdi</td>
+                    <td>@item.YazarSoyadi</td>
+                    <td>@item.Stok</td>
+                    <td>@item.KitapEklenmeTarihi</td>
+                    <td>
+                        <a href="/Book/UpdateBook/@item.KitapID" class="btn btn-primary btn-xs ">Güncelle</a>
+                    </td>
+                    <td>
+                        <a href="/Book/DeleteBook/@item.KitapID" class="btn btn-danger btn-xs">Sil</a>
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+
+</body>
+
+

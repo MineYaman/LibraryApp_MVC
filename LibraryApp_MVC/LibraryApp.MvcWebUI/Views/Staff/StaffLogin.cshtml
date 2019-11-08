@@ -1,0 +1,61 @@
+﻿
+@model LibraryApp.Entities.EntityModels.Yetkili
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head >
+    <meta name="viewport" content="width=device-width" />
+    <title>StaffLogin</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/Site.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+        <div class="card card-container">
+            <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
+            <p id="profile-name" class="profile-name-card"></p>
+            @using (Html.BeginForm("StaffLogin", "Staff", FormMethod.Post, new { @id = "frmYetkiliGirisi" }))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+                    <h4>Yetkili</h4>
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.YetkiliAd, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(model => model.YetkiliAd, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.YetkiliAd, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.YetkiliSifre, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.PasswordFor(model => model.YetkiliSifre, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.YetkiliSifre, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Giriş" class="btn btn-default" />
+                        </div>
+                    </div>
+                </div>
+            }
+                </div><!-- /card-container -->
+    </div><!-- /container -->
+
+    <script src="~/scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/scripts/bootstrap.min.js"></script>
+    <script src="~/scripts/LibraryApp.js"></script>
+</body>
+</html>

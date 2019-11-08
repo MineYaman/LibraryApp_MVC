@@ -1,0 +1,63 @@
+﻿
+@model LibraryApp.Entities.EntityModels.Ogrenci
+
+@{
+    ViewBag.Title = "AddStudent";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
+    <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+
+</head>
+
+    <body>
+        <div class="container">
+            <div class="card card-container">
+                    @using (Html.BeginForm("AddStudent", "Student", FormMethod.Post, new { @id = "frmAddStudent" }))
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-horizontal">
+                            <h4>Öğrenci Ekle</h4>
+                            <hr />
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.OgrenciAdi, "Öğrenci Adı", htmlAttributes: new { @class = "control-label col-md-3"})
+                                <div class="col-md-9">
+                                    @Html.TextBoxFor(model => model.OgrenciAdi, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.OgrenciAdi, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.OgrenciSoyadi, "Öğrenci Soyadı", htmlAttributes: new { @class = "control-label col-md-3" })
+                                <div class="col-md-9">
+                                    @Html.TextBoxFor(model => model.OgrenciSoyadi,  new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.OgrenciSoyadi, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input type="submit" value="Ekle" class="btn btn-success" />
+                                </div>
+                            </div>
+                        </div>
+                    }
+            </div><!-- /card-container -->
+        </div><!-- /container -->
+
+        <script src="~/scripts/jquery-1.10.2.min.js"></script>
+        <script src="~/scripts/bootstrap.min.js"></script>
+        <script src="~/scripts/LibraryApp.js"></script>
+    </body>
+
+
+
